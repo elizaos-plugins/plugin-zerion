@@ -60,6 +60,7 @@ var zerionProvider = {
     const data = await response.json();
     let totalValue = 0;
     const positions = data.data.map((position) => {
+      var _a;
       const value = position.attributes.value || 0;
       totalValue += value;
       return {
@@ -69,7 +70,7 @@ var zerionProvider = {
         value: position.attributes.value,
         price: position.attributes.price,
         chain: position.relationships.chain.data.id,
-        change24h: position.attributes.changes?.percent_1d || null,
+        change24h: ((_a = position.attributes.changes) == null ? void 0 : _a.percent_1d) || null,
         verified: position.attributes.fungible_info.flags.verified
       };
     });
